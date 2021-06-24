@@ -1,22 +1,22 @@
-function setup(){
-    video=createCapture(VIDEO);
-    video.size(550,500);
+song1 ="";
+song2 ="";
 
-    canvas=createCanvas(550,550);
-    canvas.position(560,150);
+function preload()
+{
+	song1 = loadSound("music.mp3");
+	song2 = loadSound("music2.mp3");
+}
+function setup() {
+	canvas =  createCanvas(600, 500);
+	canvas.center();
 
-    poseNet=ml5.poseNet(video,modelLoaded);
-    poseNet.on('pose', gotPoses);
+	video = createCapture(VIDEO);
+	video.hide();
 }
-function draw(){
-    background('#969A97');
+function draw() {
+    image(video, 0, 0, 600, 500);
 }
-function modelLoaded(){
-    console.log('PoseNet Is Initialized!');
-}
-function gotPoses(results){
-    if(results.length > 0)
-    {
-        console.log(results);
-    }
+function play()
+{
+    song.play();
 }
